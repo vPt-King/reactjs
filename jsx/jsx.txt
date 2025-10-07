@@ -1,0 +1,70 @@
+JSX (viết tắt của JavaScript XML) là một cú pháp mở rộng của JavaScript được sử dụng chủ yếu trong React để mô tả giao diện người dùng (UI).
+Nói đơn giản: JSX cho phép bạn viết HTML bên trong JavaScript.
+
+Ví dụ cơ bản:
+
+Không dùng JSX:
+
+const element = React.createElement('h1', null, 'Hello, world!');
+
+
+Dùng JSX:
+
+const element = <h1>Hello, world!</h1>;
+
+
+Hai đoạn trên tạo ra cùng một kết quả, nhưng cách viết bằng JSX ngắn gọn và dễ đọc hơn nhiều.
+
+⚙️ JSX hoạt động như thế nào?
+
+Khi biên dịch, Babel (hoặc công cụ tương tự) sẽ chuyển JSX thành các lệnh React.createElement().
+Ví dụ:
+
+const element = <h1 className="title">Hello</h1>;
+
+
+sẽ được biên dịch thành:
+
+const element = React.createElement('h1', { className: 'title' }, 'Hello');
+
+✅ Ưu điểm của JSX:
+
+Dễ đọc và dễ viết — trông gần giống HTML.
+
+Kết hợp được với logic JavaScript:
+
+const name = "Thanh";
+const element = <h1>Hello, {name}!</h1>;
+
+
+Phát hiện lỗi cú pháp sớm nhờ được biên dịch.
+
+Tăng năng suất phát triển do code rõ ràng hơn.
+
+⚠️ Lưu ý:
+
+JSX không phải là HTML thật, mà là một cú pháp JavaScript.
+
+Mỗi component JSX chỉ được bọc trong một thẻ cha:
+
+// Sai
+return (
+  <h1>Hello</h1>
+  <p>World</p>
+);
+
+// Đúng
+return (
+  <>
+    <h1>Hello</h1>
+    <p>World</p>
+  </>
+);
+
+
+Tóm lại:
+
+JSX = JavaScript + HTML
+Nó giúp bạn viết giao diện React dễ hiểu và tự nhiên hơn.
+
+Babel là một trình biên dịch (compiler) cho JavaScript — nó cho phép bạn viết code JavaScript hiện đại (ES6, ES7, JSX, TypeScript, …) và chuyển đổi chúng thành mã JavaScript cũ hơn (ES5) để trình duyệt có thể hiểu và chạy được.
