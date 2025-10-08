@@ -1,0 +1,88 @@
+props trong ReactJS là viết tắt của “properties” — dùng để truyền dữ liệu từ component cha sang component con.
+
+Nói đơn giản:
+
+props giúp component giao tiếp với nhau, đặc biệt là cha → con.
+
+🧩 Ví dụ cơ bản
+
+Giả sử bạn có component con là Course:
+
+function Course(props) {
+  return <h2>{props.name}</h2>;
+}
+
+
+Và bạn truyền dữ liệu từ component cha:
+
+function App() {
+  return (
+    <div>
+      <Course name="ReactJS" />
+      <Course name="NodeJS" />
+      <Course name="HTML & CSS" />
+    </div>
+  );
+}
+
+
+🧠 Ở đây:
+
+name="ReactJS" là prop.
+
+Trong component Course, bạn nhận lại bằng props.name.
+
+👉 Kết quả hiển thị:
+
+ReactJS
+NodeJS
+HTML & CSS
+
+⚙️ Cách props hoạt động
+Thành phần	Vai trò
+Component cha	Gửi dữ liệu qua props
+Component con	Nhận dữ liệu qua props (đối tượng chứa các giá trị được truyền)
+
+Ví dụ minh họa rõ hơn:
+
+function Welcome(props) {
+  return <p>Hello, {props.user}!</p>;
+}
+
+function App() {
+  return <Welcome user="Thanh" />;
+}
+
+
+Khi React chạy, props = { user: "Thanh" }.
+
+🧠 Dùng destructuring cho gọn hơn
+
+Thay vì viết props.name, bạn có thể giải cấu trúc (destructuring) như sau:
+
+function Course({ name }) {
+  return <h2>{name}</h2>;
+}
+
+💬 Truyền nhiều props
+function User({ name, age, city }) {
+  return (
+    <p>
+      {name} - {age} tuổi - sống ở {city}
+    </p>
+  );
+}
+
+function App() {
+  return <User name="Thanh" age={23} city="Hà Nội" />;
+}
+
+⚠️ Props là readonly (chỉ đọc)
+
+Bạn không được phép thay đổi giá trị props bên trong component con.
+Ví dụ ❌:
+
+props.name = "React"; // Sai — không được sửa props
+
+
+Nếu muốn thay đổi dữ liệu, bạn phải dùng state.
